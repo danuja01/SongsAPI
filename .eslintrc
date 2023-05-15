@@ -4,6 +4,7 @@
     "node": true,
     "es6": true
   },
+
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
@@ -48,5 +49,6 @@
     "no-var": "error",
     "prefer-const": "error"
   },
+  "ignorePatterns": ["dist/"],
   "extends": ["prettier"]
 }

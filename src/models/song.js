@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+const mongoosePaginate = require("mongoose-paginate-v2");
 
 const songSchema = new mongoose.Schema({
   genre: {
@@ -15,5 +16,8 @@ const songSchema = new mongoose.Schema({
   },
 });
 
+songSchema.plugin(mongoosePaginate);
+
 const Song = mongoose.model("Song", songSchema);
+
 export default Song;

@@ -1,11 +1,19 @@
 import Song from "../models/song";
 
 export const getSongs = async (req, res) => {
-  await Song.find()
-    .then((songs) =>
+  await Song.paginate(
+    {},
+    {
+      page: req.query.page || 1,
+      limit: req.query.limit || 10,
+      sort: { createdAt: -1 },
+      lean: true,
+    }
+  )
+    .then((data) =>
       res
         .status(200)
-        .json({ data: songs, message: "Songs retrived successfully" })
+        .json({ data: data.docs, message: "Songs retrived successfully" })
     )
     .catch((err) => res.status(400).json({ message: err.message }));
 };
